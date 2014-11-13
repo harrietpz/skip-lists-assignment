@@ -18,6 +18,7 @@ import taojava.util.SortedList;
  * ints.
  * 
  * @author Samuel A. Rebelsky
+ * @author Hattie Zucker
  */
 public class SortedListTest
 {
@@ -110,6 +111,93 @@ public class SortedListTest
   {
     assertFalse(strings.contains("hello"));
   } // emptyTest()
+  // +------------------+------------------------------------------------
+  // | Additional Tests |
+  // +------------------+
+  /**
+   * Make sure list can appropriately handle duplicates.
+   */
+  @Test
+  public void testDuplicate()
+  {
+          strings.add("hello");
+          strings.add("hello");
+          assertTrue(strings.contains("hello"));
+          strings.remove("hello");
+          assertTrue(strings.contains("hello"));
+          strings.remove("hello");
+          assertFalse(strings.contains("hello"));
+  }
+  /**
+   * Delete an element and make sure its not there anymore.
+   */
+  @Test
+  public void deleteTest()
+  {
+          strings.add("hello");
+          strings.add("goodbye");
+          strings.remove("hello");
+          assertTrue(strings.contains("goodbye"));
+          assertFalse(strings.contains("hello"));
+  }//deleteTest()
+  /**
+   * Test what happens when you remove a duplicate.
+   */
+  @Test
+  public void testRemoveDuplicate()
+  {
+          strings.add("hello");
+          strings.add("hello");
+          strings.add("friend");
+          strings.remove("hello");
+          assertTrue(strings.contains("hello"));
+          assertTrue(strings.contains("friend"));
+  }
+  /**
+   * Do a bunch of things to the list and make sure it works.
+   */
+  @Test
+  public void thingsTest()
+  {
+          strings.add("hello");
+          strings.add("goodbye");
+          strings.add("hello");
+          strings.add("hello");
+          strings.remove("hello");
+          strings.add("goodbye");
+          strings.remove("hello");
+          strings.add("hello");
+          strings.add("goodbye");
+          strings.remove("goodbye");
+          assertTrue(strings.contains("goodbye"));
+          assertTrue(strings.contains("hello"));
+          assertFalse(strings.contains("cat"));
+  }//thingsTest()
+  /**
+   * Add same value twice and remove it twice to make sure that works.
+   */
+  @Test
+  public void testTwoRemoves()
+  {
+          strings.add("hello");
+          strings.add("hello");
+          strings.remove("hello");
+          strings.remove("hello");
+          assertFalse(strings.contains("hello"));
+  }
+  /**
+   * Make sure you can make a list empty and then add again
+   */
+  @Test
+  public void testRefill()
+  {
+          strings.add("hello");
+          strings.remove("hello");
+          strings.add("friend");
+          assertTrue(strings.contains("friend"));
+          assertFalse(strings.contains("hello"));
+  }
+ 
 
   // +-----------------+-------------------------------------------------
   // | RandomizedTests |

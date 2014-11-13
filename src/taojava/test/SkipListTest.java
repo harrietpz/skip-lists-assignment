@@ -15,7 +15,7 @@ extends SortedListTest
   @Before
   public void setup()
   {
-    this.ints = new SkipList<Integer>();
-    this.strings = new SkipList<String>();
+    this.ints = new SkipList<Integer>(.25,5);
+    this.strings = new SkipList<String>(.25,5);
   } // setup
 } // SkipListTest

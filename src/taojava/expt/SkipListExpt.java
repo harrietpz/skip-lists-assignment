@@ -15,7 +15,7 @@ public class SkipListExpt
     throws Exception
   {
     PrintWriter pen = new PrintWriter(System.out, true);
-    SortedListExpt.stringExperiment(pen, new SkipList<String>());
+    SortedListExpt.stringExperiment(pen, new SkipList<String>(.25,5));
     pen.flush();
   } // main(String[])
 } // class SkipListExpt
